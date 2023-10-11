@@ -19,6 +19,7 @@ Available addons
 addon | version | maintainers | summary
 --- | --- | --- | ---
 [ssi_data_requirement_google_drive](ssi_data_requirement_google_drive/) | 14.0.1.0.0 |  | Data Requirement - Google Drive Integration
+[ssi_data_requirement_project](ssi_data_requirement_project/) | 14.0.1.0.0 |  | Data Requirement - Project Integration
 
 [//]: # (end addons)
 
