@@ -10,6 +10,7 @@ setuptools.setup(
     install_requires=[
         'odoo14-addon-ssi_data_requirement_google_drive',
         'odoo14-addon-ssi_data_requirement_project',
+        'odoo14-addon-ssi_data_requirement_work_log',
     ],
     classifiers=[
         'Programming Language :: Python',
