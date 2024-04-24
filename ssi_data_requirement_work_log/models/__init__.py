@@ -4,4 +4,5 @@
 
 from . import (
     data_requirement,
+    data_requirement_package,
 )
