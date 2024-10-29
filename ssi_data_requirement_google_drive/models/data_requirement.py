@@ -26,9 +26,11 @@ class DataRequirement(models.Model):
         google_docs_template_id = self._get_google_docs_template_id()
         new_google_doc_name = self._get_new_google_doc_name()
         google_docs_folder_id = self._get_google_docs_folder_id()
+        google_docs_template_type = self._get_google_docs_template_type()
         gdocs_url = (
-            "https://docs.google.com/spreadsheets/d/%s/copy?id=%s&title=%s&copyDestination=%s"
+            "https://docs.google.com/%s/d/%s/copy?id=%s&title=%s&copyDestination=%s"
             % (
+                google_docs_template_type,
                 google_docs_template_id,
                 google_docs_template_id,
                 new_google_doc_name,
@@ -54,6 +56,22 @@ class DataRequirement(models.Model):
             result.replace("", "%C2%A0")
 
         return result
+
+    def _get_google_docs_template_type(self):
+        self.ensure_one()
+
+        if not self.type_id.google_docs_type:
+            error_message = """
+            Context: Create new google doc from data requirement
+            Database ID: %s
+            Problem: No google docs template type
+            Solution: Insert google docs template type on data requirement type
+            """ % (
+                self.id,
+            )
+            raise UserError(_(error_message))
+
+        return self.type_id.google_docs_type
 
     def _get_google_docs_template_id(self):
         self.ensure_one()

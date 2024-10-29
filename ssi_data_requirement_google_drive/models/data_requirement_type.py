@@ -14,6 +14,15 @@ class DataRequirementType(models.Model):
     google_docs_template_id = fields.Char(
         string="Google Docs Template ID",
     )
+    google_docs_type = fields.Selection(
+        string="Google Docs Type",
+        selection=[
+            ("spreadsheets", "Google Sheet"),
+            ("forms", "Google Form"),
+        ],
+        required=False,
+        default="spreadsheets",
+    )
     google_docs_new_name = fields.Char(
         string="Google Docs New Name",
     )
